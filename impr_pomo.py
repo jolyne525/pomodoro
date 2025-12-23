@@ -32,7 +32,7 @@ def save_record(duration, plant_type):
         "hour_of_day": now.hour          # 小时 (0-23)
     }
     df = load_data()
-    # 使用 pd.concat 替代 append (pandas 新版写法)
+    # 使用 pd.concat 替代 append
     df = pd.concat([df, pd.DataFrame([new_data])], ignore_index=True)
     df.to_csv(DATA_FILE, index=False)
     return df
@@ -85,13 +85,15 @@ def generate_mock_data():
     df = pd.DataFrame(mock_data)
     df.to_csv(DATA_FILE, index=False)
     
-    # --- 计算提升率 (用于 CV) ---
+    # --- 计算提升率 (用于 CV 展示) ---
     df['period'] = np.where(df.index < len(df)/2, 'Before', 'After')
     avg_before = df[df['period']=='Before']['duration_minutes'].sum() / 15
     avg_after = df[df['period']=='After']['duration_minutes'].sum() / 15
     uplift = (avg_after - avg_before) / avg_before * 100
     
-    st.success(f"模拟数据生成完毕！你的日均专注时长提升了 {uplift:.1f}% (CV素材)")# --- 3. 侧边栏：控制区 ---
+    st.success(f"模拟数据生成完毕！你的日均专注时长提升了 {uplift:.1f}% (CV素材)")
+    
+# --- 3. 侧边栏：控制区 ---
 st.sidebar.title("🎮 控制台")
 menu = st.sidebar.radio("导航", ["专注计时器", "数据分析仪表盘"])
 
@@ -128,7 +130,7 @@ if menu == "专注计时器":
             # 倒计时逻辑
             total_time = 25 * 60
             while st.session_state.time_left > 0:
-                time.sleep(1) # 这里为了演示，如果是真实使用建议用 time.sleep(1)
+                time.sleep(1) # 这里为了演示，如果是真实使用应用 time.sleep(1)
                 st.session_state.time_left -= 1
                 mins, secs = divmod(st.session_state.time_left, 60)
                 timer_placeholder.markdown(f"<h1 style='font-size: 80px;'>{mins:02d}:{secs:02d}</h1>", unsafe_allow_html=True)
@@ -187,7 +189,7 @@ elif menu == "数据分析仪表盘":
                              title="收获植物种类占比 (Distribution)", hole=0.4)
             st.plotly_chart(fig_pie, use_container_width=True)
 
-        st.subheader("🔥 效率热力图 (Heatmap)")
+        st.subheader("🔥 效率热力图")
         st.caption("分析你在通过一周内不同时段的专注强度，寻找你的'黄金工作时间'。")
         
         # 数据预处理：构建 24小时 x 7天 的矩阵
