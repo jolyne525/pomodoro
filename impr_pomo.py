@@ -150,7 +150,7 @@ if menu == "专注计时器":
         st.info("💡 这里的操作逻辑与之前相同，但核心区别在于：所有行为都会被结构化存储。")
 
 elif menu == "数据分析仪表盘":
-    st.title("📊 个人效率洞察 (Data Insights)")
+    st.title("📊 个人效率洞察")
     
     df = load_data()
     
