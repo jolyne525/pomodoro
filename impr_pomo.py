@@ -7,10 +7,10 @@ import random
 from datetime import datetime, timedelta
 import os
 
-# --- 1. 页面配置 ---
+# 1. 页面配置 
 st.set_page_config(page_title="个人专注效率分析系统", page_icon="📊", layout="wide")
 
-# --- 2. 数据层 (Data Layer) ---
+# 2. 数据层 
 DATA_FILE = "focus_history.csv"
 
 def load_data():
@@ -55,7 +55,7 @@ def generate_mock_data():
         date = datetime.now() - timedelta(days=days_back - i) # 从30天前开始
         day_str = date.strftime("%Y-%m-%d")
         
-        # --- 关键修改：制造趋势 ---
+        # 关键修改：制造趋势 
         if i < 15: 
             # 前15天 (Before): 每天只专注 1-2 次，每次 25 分钟 (低效)
             sessions = random.randint(1, 2)
@@ -85,7 +85,7 @@ def generate_mock_data():
     df = pd.DataFrame(mock_data)
     df.to_csv(DATA_FILE, index=False)
     
-    # --- 计算提升率 (用于 CV 展示) ---
+    # 计算提升率 (用于 CV 展示) 
     df['period'] = np.where(df.index < len(df)/2, 'Before', 'After')
     avg_before = df[df['period']=='Before']['duration_minutes'].sum() / 15
     avg_after = df[df['period']=='After']['duration_minutes'].sum() / 15
@@ -93,7 +93,7 @@ def generate_mock_data():
     
     st.success(f"模拟数据生成完毕！你的日均专注时长提升了 {uplift:.1f}% (CV素材)")
     
-# --- 3. 侧边栏：控制区 ---
+# 3. 侧边栏：控制区
 st.sidebar.title("🎮 控制台")
 menu = st.sidebar.radio("导航", ["专注计时器", "数据分析仪表盘"])
 
@@ -102,7 +102,7 @@ if st.sidebar.button("生成模拟数据 (测试用)"):
     generate_mock_data()
     st.rerun()
 
-# --- 4. 主界面 ---
+# 4. 主界面
 
 if menu == "专注计时器":
     st.title("🍅 专注计时器 (数据采集端)")
@@ -140,7 +140,7 @@ if menu == "专注计时器":
             st.session_state.is_running = False
             st.session_state.time_left = 25 * 60 # 重置
             
-            # --- 关键：保存数据 ---
+            # 关键：保存数据 
             plant = random.choice(["🌱 嫩芽", "🌻 向日葵", "🌲 松树", "🌵 仙人掌"])
             save_record(25, plant)
             st.balloons()
@@ -157,7 +157,7 @@ elif menu == "数据分析仪表盘":
     if df.empty:
         st.warning("暂无数据。请先去'专注计时器'完成一次专注，或点击侧边栏的'生成模拟数据'。")
     else:
-        # --- 顶部 KPI 指标 ---
+        # 顶部 KPI 指标 
         total_sessions = len(df)
         total_hours = round(df['duration_minutes'].sum() / 60, 1)
         fav_time = df['hour_of_day'].mode()[0] if not df.empty else 0
@@ -169,7 +169,7 @@ elif menu == "数据分析仪表盘":
         
         st.divider()
 
-        # --- 图表区 ---
+        # 图表区
         c1, c2 = st.columns(2)
         
         with c1:
