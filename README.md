@@ -2,11 +2,9 @@
 
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-ff4b4b)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-
-\[!\[Streamlit](https://img.shields.io/badge/Streamlit-App-ff4b4b)](https://streamlit.io/)
-
-\[!\[License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 
 
