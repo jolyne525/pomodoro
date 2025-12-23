@@ -177,7 +177,7 @@ elif menu == "数据分析仪表盘":
             # 按日期分组求和
             daily_trend = df.groupby('date')['duration_minutes'].sum().reset_index()
             fig_trend = px.line(daily_trend, x='date', y='duration_minutes', 
-                                title="每日专注时长变化 (Time Series)", markers=True)
+                                title="每日专注时长变化", markers=True)
             st.plotly_chart(fig_trend, use_container_width=True)
             
         with c2:
@@ -186,7 +186,7 @@ elif menu == "数据分析仪表盘":
             plant_counts = df['plant_type'].value_counts().reset_index()
             plant_counts.columns = ['plant_type', 'count']
             fig_pie = px.pie(plant_counts, values='count', names='plant_type', 
-                             title="收获植物种类占比 (Distribution)", hole=0.4)
+                             title="收获植物种类占比", hole=0.4)
             st.plotly_chart(fig_pie, use_container_width=True)
 
         st.subheader("🔥 效率热力图")
