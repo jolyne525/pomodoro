@@ -1,7 +1,7 @@
 \# 🍅 FocusFlow: Personal Productivity Analytics System
 
 
-
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 \[!\[Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 
 \[!\[Streamlit](https://img.shields.io/badge/Streamlit-App-ff4b4b)](https://streamlit.io/)
