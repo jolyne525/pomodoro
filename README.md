@@ -1,4 +1,4 @@
-\# 🍅 FocusFlow: Personal Productivity Analytics System
+\# FocusFlow: Personal Productivity Analytics System
 
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
@@ -10,7 +10,7 @@
 
 
 
-\## 📖 Project Overview
+\## Project Overview
 
 
 
@@ -30,7 +30,7 @@ By collecting granular data on focus sessions (duration, time of day, day of wee
 
 
 
-\## 🚀 Key Features
+\## Key Features
 
 
 
@@ -66,7 +66,7 @@ By collecting granular data on focus sessions (duration, time of day, day of wee
 
 
 
-\## 🛠️ Tech Stack
+\## Tech Stack
 
 
 
@@ -80,7 +80,7 @@ By collecting granular data on focus sessions (duration, time of day, day of wee
 
 
 
-\## 💻 Quick Start
+\## Quick Start
 
 
 
