@@ -88,7 +88,7 @@ By collecting granular data on focus sessions (duration, time of day, day of wee
 
 ```bash
 
-git clone \[https://github.com/YourUsername/FocusFlow-Analytics.git](https://github.com/YourUsername/FocusFlow-Analytics.git)
+git clone https://github.com/jolyne525/pomodoro.git
 
-cd FocusFlow-Analytics
+cd pomodoro
 
